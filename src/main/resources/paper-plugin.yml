@@ -1,0 +1,15 @@
+name: Detainment
+version: '${version}'
+main: me.honkling.detainment.Detainment
+api-version: '1.19'
+prefix: Detainment
+load: POSTWORLD
+authors: [honkling]
+description: committed block game crimes
+website: https://github.com/honkling/Detainment
+loader: me.honkling.detainment.Loader
+dependencies:
+  server:
+    LuckPerms:
+      required: true
+      load: AFTER
