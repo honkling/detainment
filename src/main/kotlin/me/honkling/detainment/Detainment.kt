@@ -1,14 +1,10 @@
 package me.honkling.detainment
 
 import com.jme3.bullet.PhysicsSpace
-import com.jme3.bullet.collision.shapes.BoxCollisionShape
-import com.jme3.bullet.collision.shapes.PlaneCollisionShape
-import com.jme3.bullet.objects.PhysicsBody
-import com.jme3.bullet.objects.PhysicsRigidBody
-import com.jme3.math.Plane
-import com.jme3.math.Vector3f
 import com.jme3.system.NativeLibraryLoader
+import me.honkling.detainment.config.General
 import me.honkling.detainment.config.Map
+import me.honkling.detainment.config.reloadGeneral
 import me.honkling.detainment.config.reloadMap
 import me.honkling.detainment.lib.scanForRegistrable
 import me.honkling.detainment.manager.CommandManager
@@ -31,6 +27,8 @@ val logger = instance.logger
 
 lateinit var space: PhysicsSpace
 lateinit var world: World
+
+lateinit var general: General
 lateinit var map: Map
 
 val pluginManager = Bukkit.getPluginManager()
@@ -42,6 +40,7 @@ private val mapEntities = mutableListOf<Entity>()
 class Detainment : JavaPlugin() {
     override fun onEnable() {
         world = Bukkit.getWorld("world")!!
+        general = reloadGeneral()
         map = reloadMap()
 
         scheduler.runTaskAsynchronously(instance, Runnable { downloadNativeLibrary(::setupPhysics) })
