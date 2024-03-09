@@ -8,7 +8,7 @@ import org.bukkit.GameMode
 import org.bukkit.Location
 import org.bukkit.event.player.PlayerJoinEvent
 
-fun onJoin(event: PlayerJoinEvent) {
+fun onJoinSafeMode(event: PlayerJoinEvent) {
     val player = event.player
 
     if (player.hasPermission("detainment.admin"))

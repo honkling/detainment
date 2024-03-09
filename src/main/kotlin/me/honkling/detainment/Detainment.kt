@@ -10,12 +10,15 @@ import com.jme3.math.Vector3f
 import com.jme3.system.NativeLibraryLoader
 import me.honkling.detainment.config.Map
 import me.honkling.detainment.config.reloadMap
+import me.honkling.detainment.lib.scanForRegistrable
 import me.honkling.detainment.manager.CommandManager
 import me.honkling.detainment.physics.bulletFile
 import me.honkling.detainment.physics.downloadNativeLibrary
 import me.honkling.detainment.physics.objects.spawnPunchingBag
 import me.honkling.detainment.physics.resumeSimulation
 import me.honkling.detainment.registry.ITEMS
+import me.honkling.detainment.task.Task
+import me.honkling.detainment.task.Watch.bossbar
 import me.honkling.knockffa.manager.ListenerManager
 import org.bukkit.Bukkit
 import org.bukkit.World
@@ -45,15 +48,18 @@ class Detainment : JavaPlugin() {
         setupRegistries()
         setupCommands()
         setupEvents()
+        setupTasks()
     }
 
     override fun onDisable() {
+        Bukkit.getOnlinePlayers().forEach { it.hideBossBar(bossbar) }
         bulletDirectory.deleteRecursively()
         removeMapEntities()
     }
 
     private fun removeMapEntities(entities: MutableList<Entity> = mapEntities) {
         for (entity in entities) {
+            entity.vehicle?.remove()
             entity.passengers.forEach { removeMapEntities(mutableListOf(it)) }
             entity.remove()
         }
@@ -87,6 +93,11 @@ class Detainment : JavaPlugin() {
     private fun setupEvents() {
         val manager = ListenerManager(this)
         manager.registerListeners("me.honkling.detainment.event")
+    }
+
+    private fun setupTasks() {
+        val tasks = scanForRegistrable("me.honkling.detainment.task", Task::class.java)
+        tasks.forEach(Task::schedule)
     }
 
     private fun setupMap() {

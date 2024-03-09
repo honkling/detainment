@@ -8,6 +8,7 @@ import me.honkling.detainment.lib.sendSuccess
 import me.honkling.detainment.manager.annotations.Command
 import me.honkling.detainment.manager.annotations.Optional
 import me.honkling.detainment.physics.objects.spawnPunchingBag
+import me.honkling.detainment.task.Watch
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
@@ -26,4 +27,9 @@ fun give(sender: CommandSender, target: Player, item: Item, @Optional amount: In
 
 fun strength(player: Player) {
     spawnPunchingBag(player.location)
+}
+
+fun time(player: Player, time: Int) {
+    Watch.timer = time
+    player.sendSuccess("Set the time to <white>$time</white>")
 }
