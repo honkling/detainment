@@ -13,6 +13,10 @@ import org.bukkit.boss.BarColor
 import org.bukkit.boss.BarStyle
 import org.joml.Math.clamp
 
+/**
+ * Handles the bossbar and game time.
+ * May be extended in the future to handle a sidebar or action bar.
+ */
 object Watch : Task {
     val bossbar = BossBar.bossBar(Component.empty(), 0f, BossBar.Color.WHITE, BossBar.Overlay.PROGRESS)
     private var period = Period.ROLL_CALL

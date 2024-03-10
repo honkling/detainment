@@ -25,6 +25,7 @@ import java.nio.file.Files
 val instance = JavaPlugin.getPlugin(Detainment::class.java)
 val logger = instance.logger
 
+val mapEntities = mutableListOf<Entity>()
 lateinit var space: PhysicsSpace
 lateinit var world: World
 
@@ -32,10 +33,9 @@ lateinit var general: General
 lateinit var map: Map
 
 val pluginManager = Bukkit.getPluginManager()
-val scheduler = Bukkit.getScheduler()
 
+val scheduler = Bukkit.getScheduler()
 private val bulletDirectory = Files.createTempDirectory(instance.dataFolder.toPath(), "bullet").toFile()
-private val mapEntities = mutableListOf<Entity>()
 
 class Detainment : JavaPlugin() {
     override fun onEnable() {

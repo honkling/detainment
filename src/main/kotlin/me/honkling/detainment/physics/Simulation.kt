@@ -7,6 +7,7 @@ import me.honkling.detainment.instance
 import me.honkling.detainment.lib.getRadius
 import me.honkling.detainment.lib.setLeftRotation
 import me.honkling.detainment.lib.setTranslation
+import me.honkling.detainment.mapEntities
 import me.honkling.detainment.scheduler
 import me.honkling.detainment.space
 import org.bukkit.Location
@@ -49,6 +50,8 @@ fun getObjectByDisplay(display: Display): PhysicsObject? {
  * Spawns an object in the simulation and updates the display entity's position & rotation automatically.
  */
 fun spawnObject(obj: PhysicsObject) {
+    mapEntities += obj.associates
+    mapEntities += obj.display
     space.addCollisionObject(obj.body)
     obj.body.setPhysicsLocation(obj.origin.toBulletVector())
     objects[obj.display] = obj
@@ -61,6 +64,8 @@ fun despawnObject(obj: PhysicsObject) {
     space.remove(obj.body)
     obj.display.remove()
     objects.remove(obj.display)
+    mapEntities -= obj.display
+    mapEntities -= obj.associates.toSet()
 }
 
 /**
@@ -102,6 +107,7 @@ fun stepSimulation() {
             val collision = block.toBulletCollision()
             val rigidBody = PhysicsRigidBody(collision, 0f)
             space.add(rigidBody)
+            rigidBody.setPhysicsLocation(blockLocation.toCenterLocation().toBulletVector())
             rigidBody.setGravity(Vector3f.ZERO)
 
             blocks[blockLocation] = rigidBody
