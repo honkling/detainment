@@ -9,6 +9,7 @@ import me.honkling.detainment.manager.annotations.Command
 import me.honkling.detainment.manager.annotations.Optional
 import me.honkling.detainment.physics.objects.spawnPunchingBag
 import me.honkling.detainment.task.Watch
+import me.honkling.detainment.world
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
@@ -31,5 +32,6 @@ fun strength(player: Player) {
 
 fun time(player: Player, time: Int) {
     Watch.timer = time
+    world.time = time / 60L * 1000
     player.sendSuccess("Set the time to <white>$time</white>")
 }
