@@ -8,14 +8,8 @@ private val profiles = mutableMapOf<Player, Profile>()
 data class Profile(
     val player: Player
 ) {
-    var escapes = ESCAPES.get(player, 0)
-        set(value) = ESCAPES.set(player, value)
-
-    var role = ROLE.get(player, Role.PRISONER)
-        set(value) {
-            ROLE.set(player, value)
-            // todo: give equipment & teleport
-        }
+    var escapes by RequiredKeyField(ESCAPES, 0)
+    var role by RequiredKeyField(ROLE, Role.PRISONER)
 }
 
 fun Player.getProfile(): Profile {

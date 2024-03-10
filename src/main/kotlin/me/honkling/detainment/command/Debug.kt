@@ -8,6 +8,8 @@ import me.honkling.detainment.lib.sendSuccess
 import me.honkling.detainment.manager.annotations.Command
 import me.honkling.detainment.manager.annotations.Optional
 import me.honkling.detainment.physics.objects.spawnPunchingBag
+import me.honkling.detainment.profile.Role
+import me.honkling.detainment.profile.getProfile
 import me.honkling.detainment.task.Watch
 import me.honkling.detainment.world
 import org.bukkit.command.CommandSender
@@ -34,4 +36,10 @@ fun time(player: Player, time: Int) {
     Watch.timer = time
     world.time = time / 60L * 1000
     player.sendSuccess("Set the time to <white>$time</white>")
+}
+
+fun role(player: Player, role: Role) {
+    val profile = player.getProfile()
+    profile.role = role
+    player.sendSuccess("Set role to <white>$role</white>")
 }

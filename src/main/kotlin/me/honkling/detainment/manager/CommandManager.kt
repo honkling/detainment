@@ -4,6 +4,7 @@ import me.honkling.detainment.item.Item
 import me.honkling.detainment.manager.tree.CommandNode
 import me.honkling.detainment.manager.tree.SubcommandNode
 import me.honkling.detainment.manager.types.*
+import me.honkling.detainment.profile.Role
 import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
 import org.bukkit.command.Command
@@ -24,7 +25,8 @@ class CommandManager(val instance: JavaPlugin) {
         OfflinePlayer::class.java to OfflinePlayerType,
         Player::class.java to PlayerType,
         String::class.java to StringType,
-        Item::class.java to ItemType
+        Item::class.java to ItemType,
+        Role::class.java to RoleType
     )
 
     fun registerCommands(vararg packages: String) {

@@ -31,4 +31,9 @@ data class Key<T, Z : Any>(
         val container = holder.persistentDataContainer
         return container.has(key)
     }
+
+    fun remove(holder: PersistentDataHolder) {
+        val container = holder.persistentDataContainer
+        container.remove(key)
+    }
 }

@@ -1,4 +1,4 @@
-package me.honkling.knockffa.manager
+package me.honkling.detainment.manager
 
 import me.honkling.detainment.lib.getClassesInPackage
 import me.honkling.detainment.manager.annotations.Listener

@@ -15,7 +15,7 @@ import me.honkling.detainment.physics.resumeSimulation
 import me.honkling.detainment.registry.ITEMS
 import me.honkling.detainment.task.Task
 import me.honkling.detainment.task.Watch.bossbar
-import me.honkling.knockffa.manager.ListenerManager
+import me.honkling.detainment.manager.ListenerManager
 import org.bukkit.Bukkit
 import org.bukkit.World
 import org.bukkit.entity.Entity
