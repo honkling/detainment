@@ -23,6 +23,7 @@ public class Loader implements PluginLoader {
         resolver.addDependency(dependency("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.22"));
 //        resolver.addDependency(dependency("com.github.honkling:PacketEvents:2.0-SNAPSHOT"));
 //        resolver.addDependency(dependency("com.github.Tofaa2:EntityLib:v1.2.1-SNAPSHOT"));
+        resolver.addDependency(dependency("net.dv8tion:JDA:5.0.0-beta.21"));
         resolver.addDependency(dependency("com.github.stephengold:Libbulletjme:20.0.0"));
         resolver.addDependency(dependency("com.github.honkling:pocket:641b2e6640"));
         resolver.addDependency(dependency("fr.mrmicky:fastboard:2.0.2"));

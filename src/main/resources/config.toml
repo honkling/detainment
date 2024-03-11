@@ -1,1 +1,5 @@
-discord-invite = "PFNmA3nBPS"
+[discord]
+invite = "PFNmA3nBPS"
+guild = "1203867503684616202"
+chat = "1216536697454461068"
+token = ""

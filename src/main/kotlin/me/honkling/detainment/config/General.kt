@@ -7,8 +7,15 @@ import me.honkling.detainment.instance
 private val FILE = instance.dataFolder.resolve("config.toml")
 
 data class General(
-    val discordInvite: String
-)
+    val discord: Discord
+) {
+    data class Discord(
+        val invite: String,
+        val token: String,
+        val guild: String,
+        val chat: String
+    )
+}
 
 fun reloadGeneral(): General {
     val mapper = tomlMapper {

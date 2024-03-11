@@ -16,6 +16,7 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
     compileOnly("com.github.stephengold:Libbulletjme:20.0.0")
+    compileOnly("net.dv8tion:JDA:5.0.0-beta.21")
     compileOnly("net.luckperms:api:5.4")
     compileOnly("cc.ekblad:4koma:1.2.0")
 }
